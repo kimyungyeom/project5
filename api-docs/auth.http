@@ -1,0 +1,20 @@
+@host=http://localhost:3000
+
+### 회원가입
+POST {{host}}/user/register
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "1234",
+    "nickname": "예매의신"
+}
+
+### 로그인
+POST {{host}}/user/login
+Content-Type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "1234"
+}

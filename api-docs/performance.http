@@ -1,0 +1,17 @@
+@host=http://localhost:3000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwic3ViIjo5LCJpYXQiOjE3MDQxNzMyMTh9.Oh8aK8DUeSHkzzpj9li0B4f5KBqvGRf1M5eLYiuClSA
+### 공연 생성
+POST {{host}}/performance
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "title": "카제로스 레이드의 등장",
+    "content": "에키드나 전 욕망군단장의 등장",
+    "date": ["2024-01-31", "10:00"],
+    "venue": "쿠르잔",
+    "seatInfo": "A열10",
+    "image": "이미지 준비중",
+    "category": "게임",
+    "price": 50000
+}

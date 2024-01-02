@@ -1,14 +1,13 @@
 @host=http://localhost:3000
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJzdWIiOjcsImlhdCI6MTcwNDE1NjMwN30.KPMz_DQjLIQIN3pt4LIzftJSzJFdw0s0AIfOjRffM-o
-
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwic3ViIjo5LCJpYXQiOjE3MDQxNzMyMTh9.Oh8aK8DUeSHkzzpj9li0B4f5KBqvGRf1M5eLYiuClSA
 ### 회원가입
 POST {{host}}/user/register
 Content-Type: application/json
 
 {
-    "email": "test@test.com",
+    "email": "admin@test.com",
     "password": "1234",
-    "nickname": "예매의신"
+    "nickname": "어드민"
 }
 
 ### 로그인
@@ -16,7 +15,7 @@ POST {{host}}/user/login
 Content-Type: application/json
 
 {
-    "email": "test@test.com",
+    "email": "admin@test.com",
     "password": "1234"
 }
 

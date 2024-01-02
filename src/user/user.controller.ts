@@ -20,8 +20,9 @@ export class UserController {
 	}
 
 	@UseGuards(AuthGuard("jwt"))
-	@Get("email")
-	getEmail(@UserInfo() user: User) {
-		return { email: user.email };
+	@Get("myProfile")
+	async getMyProfile(@UserInfo() user: User) {
+		const userId = user.id;
+		return await this.userService.getMyProfile(userId);
 	}
 }

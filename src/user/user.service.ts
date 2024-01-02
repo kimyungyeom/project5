@@ -50,8 +50,14 @@ export class UserService {
 		};
 	}
 
-	// 이메일 체크, 내정보 조회로 바꿀 예정
 	async findByEmail(email: string) {
 		return await this.userRepository.findOneBy({ email });
+	}
+
+	// 내 정보 조회
+	async getMyProfile(userId: number) {
+		return await this.userRepository.findOne({
+			where: { id: userId },
+		});
 	}
 }

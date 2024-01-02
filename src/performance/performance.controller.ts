@@ -1,10 +1,11 @@
 import { Roles } from "src/auth/roles.decorator";
 import { RolesGuard } from "src/auth/roles.guard";
 import { Role } from "src/user/types/userRole.type";
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from "@nestjs/common";
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query } from "@nestjs/common";
 import { PerformanceService } from "./performance.service";
 import { CreatePerformanceDto } from "./dto/create-performance.dto";
 import { UpdatePerformanceDto } from "./dto/update-performance.dto";
+import { query } from "express";
 
 @UseGuards(RolesGuard)
 @Controller("performance")
@@ -14,14 +15,20 @@ export class PerformanceController {
 	// 생성
 	@Roles(Role.Admin)
 	@Post()
-	create(@Body() createPerformanceDto: CreatePerformanceDto) {
-		return this.performanceService.create(createPerformanceDto);
+	async create(@Body() createPerformanceDto: CreatePerformanceDto) {
+		return await this.performanceService.create(createPerformanceDto);
 	}
 
-	// 목록 조회
+	// 전체 목록 조회
 	@Get()
-	findAll() {
-		return this.performanceService.findAll();
+	async findAll() {
+		return await this.performanceService.findAll();
+	}
+
+	// 공연명별로 목록 조회
+	@Get("search")
+	async findByTitle(@Query("title") title: string) {
+		return await this.performanceService.findByTitle(title);
 	}
 
 	// 상세 조회

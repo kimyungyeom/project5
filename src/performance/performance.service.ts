@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { Repository } from "typeorm";
+import { Repository, Like } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreatePerformanceDto } from "./dto/create-performance.dto";
@@ -18,9 +18,21 @@ export class PerformanceService {
 		return await this.performanceRepository.save(createPerformanceDto);
 	}
 
-	// 목록 조회
-	findAll() {
-		return `This action returns all performance`;
+	// 전체 목록 조회
+	async findAll(): Promise<Performance[]> {
+		return await this.performanceRepository.find({
+			select: ["id", "title"],
+		});
+	}
+
+	// 공연명별로 목록 조회
+	async findByTitle(title: string): Promise<Performance[]> {
+		return await this.performanceRepository.find({
+			where: {
+				title: Like(`%${title}%`),
+			},
+			select: ["id", "title"],
+		});
 	}
 
 	// 상세 조회
@@ -36,5 +48,15 @@ export class PerformanceService {
 	// 삭제
 	remove(id: number) {
 		return `This action removes a #${id} performance`;
+	}
+
+	// 해당 id로 공연 검증
+	private async verifyPerformanceById(id: number) {
+		const performance = await this.performanceRepository.findOneBy({ id });
+		if (_.isNil(performance)) {
+			throw new NotFoundException("존재하지 않는 공연입니다.");
+		}
+
+		return performance;
 	}
 }

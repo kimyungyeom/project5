@@ -1,5 +1,6 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Role } from "../types/userRole.type";
+import { Reservation } from "src/reservation/entities/reservation.entity";
 
 @Index("email", ["email"], { unique: true })
 @Entity({
@@ -23,4 +24,8 @@ export class User {
 
 	@Column({ type: "enum", enum: Role, default: Role.User })
 	role: Role;
+
+	// 유저와 예약은 1:N 관계
+	@OneToMany(() => Reservation, (reservation) => reservation.user)
+	reservations: Reservation[];
 }

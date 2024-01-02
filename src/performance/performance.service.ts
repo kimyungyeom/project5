@@ -26,7 +26,7 @@ export class PerformanceService {
 		});
 	}
 
-	// 공연명별로 목록 조회
+	// 공연 검색
 	async findByTitle(title: string): Promise<Performance[]> {
 		return await this.performanceRepository.find({
 			where: {

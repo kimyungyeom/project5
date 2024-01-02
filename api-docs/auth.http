@@ -1,4 +1,5 @@
 @host=http://localhost:3000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJzdWIiOjcsImlhdCI6MTcwNDE1NjMwN30.KPMz_DQjLIQIN3pt4LIzftJSzJFdw0s0AIfOjRffM-o
 
 ### 회원가입
 POST {{host}}/user/register
@@ -18,3 +19,8 @@ Content-Type: application/json
     "email": "test@test.com",
     "password": "1234"
 }
+
+### 내 정보 조회
+GET {{host}}/user/myProfile
+Content-Type: application/json
+Authorization: Bearer {{token}}

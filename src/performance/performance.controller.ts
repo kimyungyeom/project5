@@ -25,7 +25,7 @@ export class PerformanceController {
 		return await this.performanceService.findAll();
 	}
 
-	// 공연명별로 목록 조회
+	// 공연 검색
 	@Get("search")
 	async findByTitle(@Query("title") title: string) {
 		return await this.performanceService.findByTitle(title);
@@ -33,7 +33,7 @@ export class PerformanceController {
 
 	// 상세 조회
 	@Get(":id")
-	findOne(@Param("id") id: string) {
+	async findOne(@Param("id") id: string) {
 		return this.performanceService.findOne(+id);
 	}
 

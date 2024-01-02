@@ -6,12 +6,22 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "title": "카제로스 레이드의 등장",
-    "content": "에키드나 전 욕망군단장의 등장",
-    "date": ["2024-01-31", "10:00"],
-    "venue": "쿠르잔",
-    "seatInfo": "A열10",
+    "title": "발탄 레이드의 등장",
+    "content": "낙사 지옥의 마수군단장의 등장",
+    "date": ["2023-09-13", "10:00"],
+    "venue": "아크라시아",
+    "seatInfo": "G열10",
     "image": "이미지 준비중",
     "category": "게임",
     "price": 50000
 }
+
+### 공연 전체 목록 조회
+GET {{host}}/performance
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+### 공연명 목록 조회
+GET {{host}}/performance/search?title=카멘
+Content-Type: application/json
+Authorization: Bearer {{token}}

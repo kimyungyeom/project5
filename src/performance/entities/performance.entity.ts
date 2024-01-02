@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Status } from "../types/reservationStatus.type";
+import { Reservation } from "src/reservation/entities/reservation.entity";
 
 @Entity({
 	name: "performances",
@@ -35,5 +36,7 @@ export class Performance {
 	@Column({ type: "enum", enum: Status, default: Status.available })
 	status: Status;
 
-	// 나중에 예약과 관계설정하기
+	// 공연과 예약은 1:N 관계
+	@OneToMany(() => Reservation, (reservation) => reservation.performance)
+	reservations: Reservation[];
 }

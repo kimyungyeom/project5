@@ -1,5 +1,4 @@
 import { Column, Entity, Index, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-
 import { Role } from "../types/userRole.type";
 
 @Index("email", ["email"], { unique: true })
@@ -22,6 +21,6 @@ export class User {
 	@Column({ type: "int", default: 1000000 })
 	point: number;
 
-	@Column({ type: "enum", select: false, enum: Role, default: Role.User })
+	@Column({ type: "enum", enum: Role, default: Role.User })
 	role: Role;
 }

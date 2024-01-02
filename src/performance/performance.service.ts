@@ -5,6 +5,7 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreatePerformanceDto } from "./dto/create-performance.dto";
 import { UpdatePerformanceDto } from "./dto/update-performance.dto";
 import { Performance } from "./entities/performance.entity";
+import { Status } from "./types/reservationStatus.type";
 
 @Injectable()
 export class PerformanceService {
@@ -36,8 +37,14 @@ export class PerformanceService {
 	}
 
 	// 상세 조회
-	findOne(id: number) {
-		return `This action returns a #${id} performance`;
+	async findOne(id: number) {
+		const performanceDetail = await this.verifyPerformanceById(id);
+		const reservationStatus = await this.checkReservableStatus(performanceDetail.status);
+
+		return {
+			performanceDetail,
+			reservationStatus,
+		};
 	}
 
 	// 수정
@@ -58,5 +65,10 @@ export class PerformanceService {
 		}
 
 		return performance;
+	}
+
+	// 예약확인 체크
+	private checkReservableStatus(status: Status): boolean {
+		return status === Status.available;
 	}
 }

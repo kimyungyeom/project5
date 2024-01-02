@@ -33,7 +33,7 @@ export class PerformanceController {
 
 	// 상세 조회
 	@Get(":id")
-	findOne(@Param("id") id: string) {
+	async findOne(@Param("id") id: string) {
 		return this.performanceService.findOne(+id);
 	}
 

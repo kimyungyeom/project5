@@ -5,7 +5,6 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, Query } f
 import { PerformanceService } from "./performance.service";
 import { CreatePerformanceDto } from "./dto/create-performance.dto";
 import { UpdatePerformanceDto } from "./dto/update-performance.dto";
-import { query } from "express";
 
 @UseGuards(RolesGuard)
 @Controller("performance")

@@ -7,8 +7,10 @@ import { TypeOrmModule, TypeOrmModuleOptions } from "@nestjs/typeorm";
 import { AuthModule } from "./auth/auth.module";
 import { UserModule } from "./user/user.module";
 import { PerformanceModule } from "./performance/performance.module";
+import { ReservationModule } from "./reservation/reservation.module";
 import { User } from "./user/entities/user.entity";
 import { Performance } from "./performance/entities/performance.entity";
+import { Reservation } from "./reservation/entities/reservation.entity";
 
 const typeOrmModuleOptions = {
 	useFactory: async (configService: ConfigService): Promise<TypeOrmModuleOptions> => ({
@@ -19,7 +21,7 @@ const typeOrmModuleOptions = {
 		host: configService.get("DB_HOST"),
 		port: configService.get("DB_PORT"),
 		database: configService.get("DB_NAME"),
-		entities: [User, Performance],
+		entities: [User, Performance, Reservation],
 		synchronize: configService.get("DB_SYNC"),
 		logging: true,
 	}),
@@ -44,6 +46,7 @@ const typeOrmModuleOptions = {
 		AuthModule,
 		UserModule,
 		PerformanceModule,
+		ReservationModule,
 	],
 	controllers: [],
 	providers: [],

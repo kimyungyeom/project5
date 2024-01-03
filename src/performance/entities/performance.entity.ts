@@ -21,8 +21,8 @@ export class Performance {
 	@Column({ type: "varchar", nullable: false })
 	venue: string;
 
-	@Column({ type: "varchar", nullable: false })
-	seatInfo: string;
+	@Column({ type: "int", nullable: false })
+	seat: number;
 
 	@Column({ type: "varchar", nullable: false })
 	image: string;

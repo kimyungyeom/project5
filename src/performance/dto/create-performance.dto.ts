@@ -17,9 +17,9 @@ export class CreatePerformanceDto {
 	@IsNotEmpty({ message: "장소를 입력해주세요." })
 	venue: string;
 
-	@IsString()
+	@IsNumber()
 	@IsNotEmpty({ message: "좌석 정보를 입력해주세요." })
-	seatInfo: string;
+	seat: number;
 
 	@IsString()
 	@IsNotEmpty({ message: "이미지를 넣어주세요" })

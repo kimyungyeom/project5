@@ -1,0 +1,16 @@
+@host=http://localhost:3000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwic3ViIjo5LCJpYXQiOjE3MDQxNzMyMTh9.Oh8aK8DUeSHkzzpj9li0B4f5KBqvGRf1M5eLYiuClSA
+### 공연 예매
+POST {{host}}/reservation/8
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "performanceId": 8
+}
+
+### 예매 확인
+GET {{host}}/
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
